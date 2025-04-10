@@ -12,6 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Nova+Round&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <select name="platforms">
+        <% if(locals.platforms) { %>
+            <% platforms.forEach(platform => { %>
+                <option value="<%= platform.id %>"><%= platform.name %></option>
+            <% }); %>
+        <% } %>
+    </select>
+    <img src="<%= gameImage %>"></img>
+    <h1><%= gameName %></h1>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
