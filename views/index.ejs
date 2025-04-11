@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nova+Round&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <% if (!locals.error) { %>
     <form action="/get-platform" method="post">
       <select name="platform">
           <% if(locals.platforms) { %>
@@ -37,6 +38,9 @@
     <p><b>Release date:</b> <%= gameReleaseDate %></p>
     <p><a href="<%= gameLink %> target="_blank"">Find out more about it here.</a></p>
     
+    <% } else { %>
+      <p><%= error %></p>
+    <% } %>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./scripts/script.js"></script>
   </body>
