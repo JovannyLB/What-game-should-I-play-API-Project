@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { readFileSync } from "fs";
-import axios from "axios";
 import * as utilities from "./utilities.js";
 
 const app = express();
