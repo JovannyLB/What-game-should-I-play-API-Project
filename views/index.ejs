@@ -12,36 +12,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Nova+Round&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <% if (!locals.error) { %>
-    <form action="/get-platform" method="post">
-      <select name="platform">
-          <% if(locals.platforms) { %>
-              <% platforms.forEach(platform => { %>
-                  <% if (platform.id === platformId) { %>
-                    <option value="<%= platform.id %>" selected><%= platform.name %></option>
-                  <% } else { %>
-                    <option value="<%= platform.id %>"><%= platform.name %></option>
-                  <% } %>
-              <% }); %>
-          <% } %>
-      </select>
-      <button type="submit">Random by platform</button>
-    </form>
-    <form action="/" method="get">
-      <button type="submit">Random by nature</button>
-    </form>
+    <div class="page-container">
+      <h1>What game should I play?</h1>
+      <% if (!locals.error) { %>
+      <div class="search-container">
+        <form action="/get-platform" method="post">
+          <select name="platform">
+            <% if(locals.platforms) { %> <% platforms.forEach(platform => { %> <% if (platform.id === platformId) { %>
+            <option value="<%= platform.id %>" selected><%= platform.name %></option>
+            <% } else { %>
+            <option value="<%= platform.id %>"><%= platform.name %></option>
+            <% } %> <% }); %> <% } %>
+          </select>
+          <button type="submit">Random game by platform</button>
+        </form>
 
-    <img src="<%= gameImage %>"/>
-    <h1><%= gameName %></h1>
-    <p><b>Platforms:</b> <%= gamePlatforms %></p>
-    <p><b>Description:</b> <%= gameDeck %></p>
-    <p><b>Release date:</b> <%= gameReleaseDate %></p>
-    <p><a href="<%= gameLink %> target="_blank"">Find out more about it here.</a></p>
-    
-    <% } else { %>
-      <p><%= error %></p>
-    <% } %>
+        <form action="/" method="get">
+          <button type="submit">Random game</button>
+        </form>
+      </div>
+
+      <div class="game-containter">
+        <img class="game-cover" src="<%= gameImage %>" />
+        <div class="game-info">
+          <h2><%= gameName %></h2>
+          <p><b>Platforms:</b> <%= gamePlatforms %></p>
+          <p><b>Description:</b> <%= gameDeck %></p>
+          <p><b>Release date:</b> <%= gameReleaseDate %></p>
+          <a href="<%= gameLink %>" target="_blank">Find out more about it here.</a>
+        </div>
+      </div>
+
+      <% } else { %>
+      <h2><%= error %></h2>
+      <% } %>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="./scripts/script.js"></script>
   </body>
 </html>
