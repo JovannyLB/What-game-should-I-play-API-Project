@@ -53,3 +53,14 @@ export async function getRandomGame(apiKey, platformId) {
   const randomGameResponse = await axios.get(`https://www.giantbomb.com/api/games/?format=json&${platformId === 0 ? "" : "platforms=" + platformId + "&"}offset=${randomGameId}&limit=1&field_list=name,image,platforms,deck,original_release_date,site_detail_url&api_key=${apiKey}`);
   return randomGameResponse.data.results[0];
 }
+
+/**
+ * Returns formatted date in dd/mm/yyyy format.
+ * @param {string} inputDate
+ * @returns Returns formatted date.
+ */
+export function formatDate(inputDate) {
+  const parts = inputDate.split("-");
+
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}

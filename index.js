@@ -20,7 +20,10 @@ app.get("/", async (req, res) => {
     const randomGame = await utilities.getRandomGame(apiKey, platformId);
     const randomGamePlatforms = utilities.concatPlatformString(randomGame.platforms);
 
-    res.render("index.ejs", { platforms: platforms, platformId: Number(platformId), gameName: randomGame.name, gameImage: randomGame.image.small_url, gamePlatforms: randomGamePlatforms, gameDeck: randomGame.deck, gameReleaseDate: randomGame.original_release_date, gameLink: randomGame.site_detail_url });
+    const gameDeck = randomGame.deck ? randomGame.deck : "No description available";
+    const gameReleaseDate = randomGame.original_release_date ? utilities.formatDate(randomGame.original_release_date) : "No release date available";
+
+    res.render("index.ejs", { platforms: platforms, platformId: Number(platformId), gameName: randomGame.name, gameImage: randomGame.image.small_url, gamePlatforms: randomGamePlatforms, gameDeck: gameDeck, gameReleaseDate: gameReleaseDate, gameLink: randomGame.site_detail_url });
 
     platformId = 0;
   } catch (error) {
