@@ -4,3 +4,5 @@ A local hosted game picker website that uses [GiantBomb's](https://www.giantbomb
 ## Showcase
 ### Home Page
 [![image.png](https://i.postimg.cc/T2pzJ5pG/image.png)](https://postimg.cc/rz2Z8m1Y)
+### Mobile Version
+[![image.png](https://i.postimg.cc/QNy4bjzT/image.png)](https://postimg.cc/MX1mZJq6)
